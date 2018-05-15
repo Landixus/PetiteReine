@@ -22,19 +22,24 @@ public class CyclistMovement : MonoBehaviour
     private float forward = 0f;
     private float sideways = 0f;
 
+    private AntScript AntProxy;
 
     void Start()
     {
 
         m_rigidBody = GetComponent<Rigidbody>();
         m_animator = GetComponentInChildren<Animator>();
-
+        AntProxy = GetComponent<AntScript>();
+        AntProxy.Activate();
     }
 
     void FixedUpdate()
     {
-        
-        forward     = Input.GetAxis("Vertical");
+
+        if (!AntProxy.isOn)
+        {
+            SetForward(Input.GetAxis("Vertical"));
+        }
         sideways    = Input.GetAxis("Horizontal");
 
         HandleSteering();
@@ -69,5 +74,10 @@ public class CyclistMovement : MonoBehaviour
        
         m_animator.speed = (forward > 0) ? forward*maxSpeed : 0;
 
+    }
+
+    public void SetForward(float value)
+    {
+        forward = value;
     }
 }
