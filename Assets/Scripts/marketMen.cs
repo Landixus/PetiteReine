@@ -18,11 +18,12 @@ public class marketMen : MonoBehaviour {
         
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             m_animator.speed = 0;
+
             gameObject.layer = LayerMask.NameToLayer("Bike");
           
         }

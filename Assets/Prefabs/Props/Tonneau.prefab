@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4811549667022898}
-  - component: {fileID: 95760015797144074}
   - component: {fileID: 54976035526597998}
   - component: {fileID: 65056805006666544}
   m_Layer: 0
@@ -86,7 +85,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 95c91b6fba28bbe468fada755c295cf8, type: 2}
+  - {fileID: 2100000, guid: 09e5eaed839b434498c56a951cc7fa56, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,20 +138,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1190086, y: 0.12243664, z: 0.11842695}
   m_Center: {x: -0.05656168, y: 0.05827576, z: -0.05591105}
---- !u!95 &95760015797144074
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1929369268941556}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 45b05424df733af4f81a31d5a10d2bf6, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
