@@ -19,12 +19,13 @@ public class InteractionScript : MonoBehaviour {
     void Start () {
         m_rigidBody = GetComponent<Rigidbody>();
         m_sprite = GetComponentInChildren<SpriteRenderer>(); //Cyclist sprite
+        m_healthPlayer = GetComponent<HealthPlayer>(); // Vie du Cycliste
 	}
-	
+
 	void Update () {
 
         HandleBlinking();
-          
+
 	}
 
     //for the interaction with trigger objects (pick ups)
@@ -35,7 +36,7 @@ public class InteractionScript : MonoBehaviour {
             Destroy(other.gameObject);
             StartCoroutine("SpeedUp");
         }
-        
+
     }
 
     //for the interaction with non trigger objects (Npcs)
@@ -44,7 +45,8 @@ public class InteractionScript : MonoBehaviour {
         if (collision.gameObject.CompareTag("MarketMen"))
         {
             StartCoroutine("SpeedDown");
-            
+            m_healthPlayer.takeDamage(20);
+
         }
     }
 
@@ -88,7 +90,7 @@ public class InteractionScript : MonoBehaviour {
     IEnumerator SpeedDown()
     {
         StartBlinking(malusTime);
-        
+
         float fm = GetComponent<CyclistMovement>().forwardForceMultiplier;
 
         float time = Time.time;
@@ -101,7 +103,7 @@ public class InteractionScript : MonoBehaviour {
 
         while (time2 - time < malusTime)
         {
-            //progressively recover initial speed 
+            //progressively recover initial speed
             GetComponent<CyclistMovement>().forwardForceMultiplier -= (Time.time - time2)*(reduction/malusTime);
             time2 = Time.time;
             yield return null;
@@ -109,5 +111,3 @@ public class InteractionScript : MonoBehaviour {
 
     }
 }
-    
-
