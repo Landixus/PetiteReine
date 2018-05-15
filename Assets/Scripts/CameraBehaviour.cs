@@ -4,19 +4,40 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour {
 
-    private Vector3 offset;
     public GameObject player;
-    public float min;
-    private Vector3 previousRotation;
+
+    public GameObject front, back;
+    private Vector3 cyclistZ_axis;
+    public Vector3 offset, targetOffset;
+    public float distance;
+
+    public float multiplier;
+
+    private Vector3 eyePosition,eyeTarget,pointToLook;
 	// Use this for initialization
 	void Start () {
-        offset = transform.position - player.transform.position;
-        previousRotation = player.transform.eulerAngles;
+
+        cyclistZ_axis = (front.transform.position - back.transform.position).normalized;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = player.transform.position + offset;
+
+        cyclistZ_axis = (front.transform.position - back.transform.position).normalized;
+
+        pointToLook = player.transform.position + targetOffset;
         
+        UpdateEye();
+
+        transform.LookAt(pointToLook);
 	}
+
+    private void UpdateEye()
+    {
+        eyePosition = transform.position;
+        eyeTarget = player.transform.position - cyclistZ_axis * distance + offset;
+
+        transform.position = eyePosition + (eyeTarget - eyePosition) * multiplier * Time.deltaTime;
+                
+    }
 }
