@@ -16,6 +16,8 @@ public class InteractionScript : MonoBehaviour {
     private float timer=0f;
     private float time_to_blink = 0f;
 
+    private HealthPlayer m_healthPlayer;
+
     void Start () {
         m_rigidBody = GetComponent<Rigidbody>();
         m_sprite = GetComponentInChildren<SpriteRenderer>(); //Cyclist sprite
@@ -45,7 +47,7 @@ public class InteractionScript : MonoBehaviour {
         if (collision.gameObject.CompareTag("MarketMen"))
         {
             StartCoroutine("SpeedDown");
-            m_healthPlayer.takeDamage(20);
+            m_healthPlayer.TakeDamage(20);
 
         }
     }
