@@ -12,6 +12,7 @@ public class InteractionScript : MonoBehaviour {
 
     private Rigidbody m_rigidBody;
     private SpriteRenderer m_sprite;
+    private HealthPlayer m_healthPlayer;
 
     private float timer=0f;
     private float time_to_blink = 0f;
@@ -45,7 +46,7 @@ public class InteractionScript : MonoBehaviour {
         if (collision.gameObject.CompareTag("MarketMen"))
         {
             StartCoroutine("SpeedDown");
-            m_healthPlayer.takeDamage(20);
+            m_healthPlayer.TakeDamage(20);
 
         }
     }
