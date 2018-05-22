@@ -7,7 +7,7 @@ public class HealthPlayer : MonoBehaviour {
 	private int _health; // Barre de vie du joueur
 	public int _hpmax;
 	private int _sweat; // Barre de sueur du joueur
-	private int _swtmax
+	private int _swtmax;
 
 
 	public void Start () {
@@ -17,14 +17,14 @@ public class HealthPlayer : MonoBehaviour {
 		_sweat = _swtmax;
 	}
 
-	int getHealth(){
+	public int GetHealth(){
 		return _health;
 	}
-	int getSweat(){
+	public int GetSweat(){
 		return _sweat;
 	}
 
-	public void takeDamage(int amount){
+	public void TakeDamage(int amount){
 		_health -= amount;
 
 		if (_health <0) {
@@ -34,17 +34,17 @@ public class HealthPlayer : MonoBehaviour {
 	}
 
 
-	public void heal(int amount){
+	public void Heal(int amount){
 		_health += amount;
 
 		if(_health > _hpmax){
-			_health = hpmax;
+			_health = _hpmax;
 			// Appeler une fonction pour montrer que le joueur est full life
 		}
 	}
 
-	public void sweat(int speed){
-		_sweat -= 0.2*speed;
+	public void Sweat(int speed){
+	//	_sweat -= 0.2*speed;
 	}
 
 

@@ -12,6 +12,7 @@ public class InteractionScript : MonoBehaviour {
 
     private Rigidbody m_rigidBody;
     private SpriteRenderer m_sprite;
+    private HealthPlayer m_healthPlayer;
 
     private float timer=0f;
     private float time_to_blink = 0f;
