@@ -66,7 +66,7 @@ public class AntScript : MonoBehaviour {
     public void SetResistance(byte res)
     {
         Debug.Log("setting resistance to"+res*(0.5f/100f)+"%");
-        byte[] pageToSend = new byte[8] { 0x30, 0xFF, 0xFF, 0xFF, 0xFF, 4, 55, 200 };//unit is 0.50%
+        byte[] pageToSend = new byte[8] { 0x30, 0xFF, 0xFF, 0xFF, 0xFF, 4, 55, res };//unit is 0.50%
         FECChannel.sendAcknowledgedData(pageToSend);
     }
 

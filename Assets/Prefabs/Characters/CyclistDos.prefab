@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 114400885516897272}
   - component: {fileID: 114237616447165514}
   - component: {fileID: 114500038395619850}
-  - component: {fileID: 114777918778951048}
+  - component: {fileID: 114500293103190046}
   m_Layer: 8
   m_Name: CyclistDos
   m_TagString: Player
@@ -947,7 +947,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328636722196844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.116, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4692015303035258}
@@ -1254,6 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239fb7fcb26705e4c80fa4964b3106f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOn: 0
 --- !u!114 &114500038395619850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1267,7 +1268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bonusTime: 10
   malusTime: 5
---- !u!114 &114777918778951048
+--- !u!114 &114500293103190046
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1275,9 +1276,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328636722196844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 212a6906fddcd73429ae831b4e069b24, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ec05e77af3fc4f9baa00ac4b6fa4094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hpmax: 0
 --- !u!136 &136102667548719566
 CapsuleCollider:
   m_ObjectHideFlags: 1

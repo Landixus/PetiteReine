@@ -13,16 +13,15 @@ public class InteractionScript : MonoBehaviour {
     private Rigidbody m_rigidBody;
     private SpriteRenderer m_sprite;
     private HealthPlayer m_healthPlayer;
-
+    private Stability m_StabilitySript;
     private float timer=0f;
     private float time_to_blink = 0f;
-
-    private HealthPlayer m_healthPlayer;
 
     void Start () {
         m_rigidBody = GetComponent<Rigidbody>();
         m_sprite = GetComponentInChildren<SpriteRenderer>(); //Cyclist sprite
         m_healthPlayer = GetComponent<HealthPlayer>(); // Vie du Cycliste
+        m_StabilitySript = GetComponent<Stability>();
 	}
 
 	void Update () {
@@ -39,19 +38,18 @@ public class InteractionScript : MonoBehaviour {
             Destroy(other.gameObject);
             StartCoroutine("SpeedUp");
         }
-
-    }
-
-    //for the interaction with non trigger objects (Npcs)
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("MarketMen"))
+        else if(other.gameObject.CompareTag("NPC"))
         {
             StartCoroutine("SpeedDown");
+            
             m_healthPlayer.TakeDamage(20);
-
+            //malus must only trigger once
+            Destroy(other);
+            
         }
+
     }
+
 
     private void StartBlinking(float time)
     {
@@ -92,8 +90,9 @@ public class InteractionScript : MonoBehaviour {
 
     IEnumerator SpeedDown()
     {
+        
         StartBlinking(malusTime);
-
+        m_StabilitySript.pid = false;
         float fm = GetComponent<CyclistMovement>().forwardForceMultiplier;
 
         float time = Time.time;
@@ -101,7 +100,6 @@ public class InteractionScript : MonoBehaviour {
 
         GetComponent<CyclistMovement>().forwardForceMultiplier += reduction;
 
-        m_rigidBody.velocity = m_rigidBody.velocity*0.5f;
         float time2 = time;
 
         while (time2 - time < malusTime)
@@ -111,6 +109,6 @@ public class InteractionScript : MonoBehaviour {
             time2 = Time.time;
             yield return null;
         }
-
+        
     }
 }
