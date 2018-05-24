@@ -143,7 +143,7 @@ public class InteractionScript : MonoBehaviour {
     {
         
         StartBlinking(malusTime);
-        m_StabilitySript.pid = false;
+        
         float fm = GetComponent<CyclistMovement>().forwardForceMultiplier;
 
         float time = Time.time;
