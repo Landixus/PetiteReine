@@ -8,6 +8,7 @@ TagManager:
   - Boost
   - MarketMen
   - Building
+  - Granny
   layers:
   - Default
   - TransparentFX
