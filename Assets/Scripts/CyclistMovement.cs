@@ -24,6 +24,10 @@ public class CyclistMovement : MonoBehaviour
 
     private AntScript AntProxy;
 
+	public float getForward() {
+		return forward;
+	}
+
     void Start()
     {
 

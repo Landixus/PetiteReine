@@ -35,7 +35,7 @@ public class InteractionScript : MonoBehaviour {
 
 	void Update () {
 		
-		/*HandleCollision ();*/
+		HandleCollision ();
         HandleBlinking();
 
 	}
@@ -49,8 +49,22 @@ public class InteractionScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Boost"))
+        {
+            Destroy(other.gameObject);
+            StartCoroutine("SpeedUp");
+        }
 
-        /***************************************************************************************
+		// Collision avec un pick-up de réduction de la sueur
+		if (other.gameObject.CompareTag("Refreshment")) {
+			m_healthPlayer.refresh (40);
+			Destroy (other.gameObject);
+		}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+		/***************************************************************************************
 		 * Cette fonction s'occupe de gérer les collisions avec les objets non personnages 
 		 * 
 		 * Typiquement elle appelle les fonctions relatives : 
@@ -58,25 +72,31 @@ public class InteractionScript : MonoBehaviour {
 		 * 		- A la gestion des collisions successives (temps minimal entre deux collisions
 		 ***************************************************************************************/
 
-        if (other.gameObject.CompareTag("Boost"))
+		if (m_hasCollided) {
+			// On sort directement de la fonction si le temps entre deux collisions 
+			// n'est pas atteint
+			return;			
+		}
+
+        if (collision.gameObject.CompareTag("MarketMen"))
         {
-            Destroy(other.gameObject);
-            StartCoroutine("SpeedUp");
-        }
-        else if(other.gameObject.CompareTag("NPC"))
-        {
-            m_hasCollided = true;
+			m_hasCollided = true;
 			Debug.Log ("Collision");
 			m_healthPlayer.takeDamage(20);
             StartCoroutine("SpeedDown");
-            //malus must only trigger once
-            Destroy(other);
-        }
 
+        }
+		if (collision.gameObject.CompareTag("Granny"))
+		{
+			m_hasCollided = true;
+			m_healthPlayer.takeDamage(20);
+			StartCoroutine("SpeedDown");
+
+		}
     }
 
 
-	/*private void HandleCollision() {
+	private void HandleCollision() {
 		// S'occupe de gérer le temps entre deux collisions
 
 		if (m_hasCollided) {
@@ -88,7 +108,7 @@ public class InteractionScript : MonoBehaviour {
 			m_hasCollided = false; 
 			m_collisionTime = 0f; 
 		}
-	}*/
+	}
 
 	//===============================================================================================
 	//							 	GESTION DES CLIGNOTEMENTS
@@ -141,9 +161,8 @@ public class InteractionScript : MonoBehaviour {
 
     IEnumerator SpeedDown()
     {
-        
         StartBlinking(malusTime);
-        
+
         float fm = GetComponent<CyclistMovement>().forwardForceMultiplier;
 
         float time = Time.time;
@@ -151,6 +170,7 @@ public class InteractionScript : MonoBehaviour {
 
         GetComponent<CyclistMovement>().forwardForceMultiplier += reduction;
 
+        m_rigidBody.velocity = m_rigidBody.velocity*0.5f;
         float time2 = time;
 
         while (time2 - time < malusTime)
@@ -160,9 +180,6 @@ public class InteractionScript : MonoBehaviour {
             time2 = Time.time;
             yield return null;
         }
-        
+
     }
-
-
-
 }
