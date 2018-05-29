@@ -251,8 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2feedeefe5d24e1b9bec6408b6b7d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftBoundary: {fileID: 4166000825544146}
-  rightBoundary: {fileID: 4338986218431638}
+  leftBoundary: {fileID: 4338986218431638}
+  rightBoundary: {fileID: 4166000825544146}
   nbStep: 100
   type: hommeChien
 --- !u!212 &212307932087758602
