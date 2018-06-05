@@ -26,7 +26,12 @@ public class AntScript : MonoBehaviour {
     ushort deviceNumber;
  
     public bool isOn = false;
-
+    public float dt;
+    private float rpm;
+    private float previousrpm=0f;
+    private float acceleration = 0f;
+    private float pt=0;
+    private float t;
     public void Activate()
     {
         
@@ -119,8 +124,16 @@ public class AntScript : MonoBehaviour {
 
             int distanceTraveled = data[3];
             //Debug.Log("distanceTraveled:" + distanceTraveled+"m");
-            cyclistScript.SetForward(GetSpeed(data));
-
+            rpm = GetSpeed(data);
+            t = Time.time;
+            if (t - pt >= dt)
+            {
+                acceleration = (rpm - previousrpm) / (t-pt);
+                previousrpm = rpm;
+                pt = t;
+                cyclistScript.SetForward(acceleration);
+            }
+            
         }
     }
 

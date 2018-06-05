@@ -57,8 +57,8 @@ public class InteractionScript : MonoBehaviour {
 
 		// Collision avec un pick-up de réduction de la sueur
 		if (other.gameObject.CompareTag("Refreshment")) {
-			m_healthPlayer.refresh (40);
-			Destroy (other.gameObject);
+			m_healthPlayer.refresh(40);
+			Destroy(other.gameObject);
 		}
     }
 

@@ -14,7 +14,7 @@ public class CyclistMovement : MonoBehaviour
     public float maxSteering;                //maximum angle for the front wheel rotation 
     public float brakeForce;
     public float maxSpeed;                   //maxSpeed is used for the animation handling 
-
+    public float threshold;
 
     private Rigidbody m_rigidBody;
     private Animator m_animator;
@@ -55,17 +55,21 @@ public class CyclistMovement : MonoBehaviour
 
     void HandleAcceleration()
     {
-        if (forward >= 0)
+        Debug.Log(forward);
+        if (forward >= threshold)
         {
-            m_backWheelCollider.motorTorque = forward * forwardForceMultiplier;
+            m_backWheelCollider.motorTorque = ((forward>0)?forward:0) * forwardForceMultiplier;
             m_frontWheelCollider.brakeTorque = 0;
             m_backWheelCollider.brakeTorque = 0;
         }
-        else
+        else 
         {
             m_backWheelCollider.brakeTorque = -forward * brakeForce;
             m_frontWheelCollider.brakeTorque = -forward * brakeForce;
+            
         }
+
+        
     }
 
     void HandleSteering()

@@ -3019,6 +3019,41 @@ Prefab:
       propertyPath: SWT_COEF
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114400885516897272, guid: a7fdeacc96d06d948b62bba658d53f64,
+        type: 2}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237616447165514, guid: a7fdeacc96d06d948b62bba658d53f64,
+        type: 2}
+      propertyPath: forwardForceMultiplier
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237616447165514, guid: a7fdeacc96d06d948b62bba658d53f64,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114400885516897272, guid: a7fdeacc96d06d948b62bba658d53f64,
+        type: 2}
+      propertyPath: dt
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237616447165514, guid: a7fdeacc96d06d948b62bba658d53f64,
+        type: 2}
+      propertyPath: brakeForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237616447165514, guid: a7fdeacc96d06d948b62bba658d53f64,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237616447165514, guid: a7fdeacc96d06d948b62bba658d53f64,
+        type: 2}
+      propertyPath: threshold
+      value: -3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7fdeacc96d06d948b62bba658d53f64, type: 2}
   m_IsPrefabParent: 0
@@ -3243,6 +3278,10 @@ Prefab:
     - target: {fileID: 1418326862215478, guid: 74c11a1b418834245aad7a9b6dcc040b, type: 2}
       propertyPath: m_Name
       value: MamieChariot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418326862215478, guid: 74c11a1b418834245aad7a9b6dcc040b, type: 2}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74c11a1b418834245aad7a9b6dcc040b, type: 2}
@@ -5697,6 +5736,16 @@ Prefab:
       propertyPath: back
       value: 
       objectReference: {fileID: 1965897528}
+    - target: {fileID: 114179333955109880, guid: a0427247812adb445a0a186258c833e7,
+        type: 2}
+      propertyPath: originalOffset.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114179333955109880, guid: a0427247812adb445a0a186258c833e7,
+        type: 2}
+      propertyPath: originalDistance
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0427247812adb445a0a186258c833e7, type: 2}
   m_IsPrefabParent: 0
@@ -5933,7 +5982,7 @@ GameObject:
   - component: {fileID: 1829001280}
   m_Layer: 0
   m_Name: MamieChariot (1)
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
