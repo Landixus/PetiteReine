@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 65009106987502072}
   - component: {fileID: 65994358772263472}
   - component: {fileID: 95909595868121858}
-  - component: {fileID: 114717054820159858}
   - component: {fileID: 82128677857193094}
+  - component: {fileID: 114750373193359792}
   m_Layer: 0
   m_Name: HommeMarche
   m_TagString: NPC
@@ -182,7 +182,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114717054820159858
+--- !u!114 &114750373193359792
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -190,12 +190,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1528737381628944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4975337861ee8d245aef668b32761596, type: 3}
+  m_Script: {fileID: 11500000, guid: b2feedeefe5d24e1b9bec6408b6b7d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftBoundary: {fileID: 0}
+  rightBoundary: {fileID: 0}
+  nbStep: 0
+  type: symetric
   hurtSound1: {fileID: 8300000, guid: 05ecdd2cb484d1b48a1a0c8b6d712488, type: 3}
   hurtsound2: {fileID: 8300000, guid: c67bb4c35c76b0c448cb640580c1df00, type: 3}
-  top: {fileID: 0}
+  moving: 0
 --- !u!212 &212568845628366980
 SpriteRenderer:
   m_ObjectHideFlags: 1

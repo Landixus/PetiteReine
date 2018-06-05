@@ -55,7 +55,7 @@ public class CyclistMovement : MonoBehaviour
 
     void HandleAcceleration()
     {
-        Debug.Log(forward);
+
         if (forward >= threshold)
         {
             m_backWheelCollider.motorTorque = ((forward>0)?forward:0) * forwardForceMultiplier;

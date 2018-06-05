@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 65148145483382724}
   - component: {fileID: 65013513771952216}
   - component: {fileID: 114887381853301556}
+  - component: {fileID: 82045599791962802}
   m_Layer: 0
   m_Name: HommeChien
   m_TagString: NPC
@@ -223,6 +224,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.6837552, y: 2.7656076, z: 0.2}
   m_Center: {x: -0.5826169, y: -1.5440052, z: 0}
+--- !u!82 &82045599791962802
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1175668821558738}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95323062616045666
 Animator:
   serializedVersion: 3
@@ -254,7 +335,10 @@ MonoBehaviour:
   leftBoundary: {fileID: 4338986218431638}
   rightBoundary: {fileID: 4166000825544146}
   nbStep: 100
-  type: hommeChien
+  type: asymetric
+  hurtSound1: {fileID: 8300000, guid: 05ecdd2cb484d1b48a1a0c8b6d712488, type: 3}
+  hurtsound2: {fileID: 8300000, guid: c67bb4c35c76b0c448cb640580c1df00, type: 3}
+  moving: 1
 --- !u!212 &212307932087758602
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -9,7 +9,7 @@ public class marketMen : MonoBehaviour {
     private Rigidbody m_rigidBody;
     private AudioSource source;
     public AudioClip hurtSound1,hurtsound2;
-    public Transform top;
+  
 
     private void Awake()
     {

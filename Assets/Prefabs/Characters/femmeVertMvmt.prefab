@@ -38,8 +38,9 @@ GameObject:
   - component: {fileID: 54992709144935508}
   - component: {fileID: 95376402742727942}
   - component: {fileID: 65851798206579930}
-  - component: {fileID: 114670343751433304}
   - component: {fileID: 65450552615272566}
+  - component: {fileID: 114670343751433304}
+  - component: {fileID: 82821325192405690}
   m_Layer: 0
   m_Name: FemmeVerte
   m_TagString: NPC
@@ -171,6 +172,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.1, y: 19.35, z: 0.19999999}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82821325192405690
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287456543776978}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95376402742727942
 Animator:
   serializedVersion: 3
@@ -202,7 +283,10 @@ MonoBehaviour:
   leftBoundary: {fileID: 4311727577842082}
   rightBoundary: {fileID: 4594821448839788}
   nbStep: 500
-  type: mamie
+  type: symetric
+  hurtSound1: {fileID: 8300000, guid: 05ecdd2cb484d1b48a1a0c8b6d712488, type: 3}
+  hurtsound2: {fileID: 8300000, guid: c67bb4c35c76b0c448cb640580c1df00, type: 3}
+  moving: 1
 --- !u!212 &212466417759014880
 SpriteRenderer:
   m_ObjectHideFlags: 1
