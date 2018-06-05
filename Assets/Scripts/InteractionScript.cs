@@ -19,7 +19,7 @@ public class InteractionScript : MonoBehaviour {
     private float timer=0f;
     private float time_to_blink = 0f;
 
-	private float TIME_BTW_COLLISION = 1.0f;
+	//private float TIME_BTW_COLLISION = 1.0f;
 
 
 	// -----------------------------------------------------------------------------------------
@@ -29,13 +29,13 @@ public class InteractionScript : MonoBehaviour {
         m_rigidBody = GetComponent<Rigidbody>();
         m_sprite = GetComponentInChildren<SpriteRenderer>(); 								//Cyclist sprite
         m_healthPlayer = GameObject.Find("CyclistDos").GetComponent<HealthPlayer>(); 		// Vie du Cycliste
-		m_collisionTime = 0f; 
-		m_hasCollided = false;
+		/*m_collisionTime = 0f; 
+		m_hasCollided = false;*/
 	}
 
 	void Update () {
 		
-		HandleCollision ();
+		/*HandleCollision ();*/
         HandleBlinking();
 
 	}
@@ -60,6 +60,17 @@ public class InteractionScript : MonoBehaviour {
 			m_healthPlayer.refresh(40);
 			Destroy(other.gameObject);
 		}
+
+        if (other.gameObject.CompareTag("NPC"))
+        {
+            
+            Debug.Log("Collision");
+            m_healthPlayer.takeDamage(20);
+            StartCoroutine("SpeedDown");
+            Destroy(other);
+
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,34 +83,20 @@ public class InteractionScript : MonoBehaviour {
 		 * 		- A la gestion des collisions successives (temps minimal entre deux collisions
 		 ***************************************************************************************/
 
-		if (m_hasCollided) {
+		//if (m_hasCollided) {
 			// On sort directement de la fonction si le temps entre deux collisions 
 			// n'est pas atteint
-			return;			
-		}
+			//return;			
+		//}
 
-        if (collision.gameObject.CompareTag("MarketMen"))
-        {
-			m_hasCollided = true;
-			Debug.Log ("Collision");
-			m_healthPlayer.takeDamage(20);
-            StartCoroutine("SpeedDown");
-
-        }
-		if (collision.gameObject.CompareTag("Granny"))
-		{
-			m_hasCollided = true;
-			m_healthPlayer.takeDamage(20);
-			StartCoroutine("SpeedDown");
-
-		}
+        
     }
 
 
 	private void HandleCollision() {
 		// S'occupe de gérer le temps entre deux collisions
 
-		if (m_hasCollided) {
+		/*if (m_hasCollided) {
 			// S'il y a eu une collision, on ajoute du temps à la variable 
 			m_collisionTime += Time.deltaTime;
 		}
@@ -107,7 +104,7 @@ public class InteractionScript : MonoBehaviour {
 			// Si on dépasse le temps minimal entre deux collisions, on reinitialise le temps 
 			m_hasCollided = false; 
 			m_collisionTime = 0f; 
-		}
+		}*/
 	}
 
 	//===============================================================================================
