@@ -23,7 +23,7 @@ public class HealthPlayer : MonoBehaviour {
 
 
     void Start () {
-		
+
 		_hpmax = 100;
 		_swtmax = 100;
 		_health = _hpmax;
@@ -41,13 +41,13 @@ public class HealthPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		sweat ();
-		UpdateSweat (); 
+		UpdateSweat ();
 
 	}
 
-	//===============================================================================================
-	//							FONCTIONS POUR RETOURNER LES ATTRIBUTS
-	//===============================================================================================
+	//================================================================================
+	//										FONCTIONS POUR RETOURNER LES ATTRIBUTS
+	//================================================================================
 
 	public int getHealth(){
 		// Retourne la vie actuelle du personnage
@@ -81,9 +81,9 @@ public class HealthPlayer : MonoBehaviour {
 	}
 
 	public void UpdateSweat() {
-		// Met à jour la barre de sueur 
-		float amount = (float) _sweat / _swtmax; 
-		_sweatBar.fillAmount = amount; 
+		// Met à jour la barre de sueur
+		float amount = (float) _sweat / _swtmax;
+		_sweatBar.fillAmount = amount;
 	}
 
 
@@ -124,11 +124,11 @@ public class HealthPlayer : MonoBehaviour {
 	//===============================================================================================
 
 	public void sweat() {
-		/*	La fonction sweat gère la génération de sueur */ 
+		/*	La fonction sweat gère la génération de sueur */
 
-		// IMPORTANT 
-		// PLutot que de générer la sueur proportionnellement à la vitesse, il serait 
-		// plus intéressant de le faire par rapport à la force (ou resistance) exercée 
+		// IMPORTANT
+		// PLutot que de générer la sueur proportionnellement à la vitesse, il serait
+		// plus intéressant de le faire par rapport à la force (ou resistance) exercée
 		// par le pédalier !
 
 		if (_cm.getForward() > 0) {
@@ -141,13 +141,13 @@ public class HealthPlayer : MonoBehaviour {
 			}
 		}
 		else {
-			// Sinon on ne pédale plus, et la sueur doit se mettre à baisser 
+			// Sinon on ne pédale plus, et la sueur doit se mettre à baisser
 			if (_sweat > 0) {
 				// La barre de sueur diminue toujours de manière constante
-				// (On peut éventuellement mettre un rapport entre vitesse du vélo 
+				// (On peut éventuellement mettre un rapport entre vitesse du vélo
 				// et perte de sueur)
 				_sweat -= SWT_LOSS_COEF;
-			}	
+			}
 			if (_sweat < 0) {
 				// Si la sueur devient négative, on la rétablit à zéro
 				_sweat = 0;
@@ -157,7 +157,7 @@ public class HealthPlayer : MonoBehaviour {
 
 
 	public void refresh(int amount) {
-		/* La fonction refresh permet de diminuer la sueur du personnage */ 
+		/* La fonction refresh permet de diminuer la sueur du personnage */
 		_sweat -= amount;
 
 		if (_sweat <0) {
