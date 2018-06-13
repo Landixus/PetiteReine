@@ -8,13 +8,12 @@ public class CameraBehaviour : MonoBehaviour {
 
     public GameObject front, back;
     private Vector3 cyclistZ_axis;
-    public Vector3 originalOffset, targetOffset;
+    public Vector3 targetOffset, offset;
     public float originalDistance;
 
     public float multiplier;
 
     private float distance;
-    private Vector3 offset;
     private Vector3 eyePosition,eyeTarget,pointToLook;
     private Vector3 interpolatedTarget;
 	// Use this for initialization
@@ -28,42 +27,47 @@ public class CameraBehaviour : MonoBehaviour {
 
         cyclistZ_axis = (front.transform.position - back.transform.position).normalized;
 
-        pointToLook = player.transform.position + targetOffset;
+        pointToLook = player.transform.position + offset;
 
         UpdateTargets();
         UpdateDistance();
 
         transform.position = interpolatedTarget;
         transform.LookAt(pointToLook);
-        Debug.DrawLine(pointToLook, transform.position);
+        
     }
 
     private void UpdateTargets()
     {
         eyePosition = transform.position;
-        eyeTarget = player.transform.position - cyclistZ_axis * distance + offset;
+        eyeTarget = player.transform.position - cyclistZ_axis * distance + targetOffset;
 
-       interpolatedTarget = eyePosition + (eyeTarget - eyePosition) * multiplier * Time.deltaTime;
+        interpolatedTarget = eyePosition + (eyeTarget - eyePosition) * multiplier * Time.deltaTime;
                 
     }
 
     private void UpdateDistance()
     {
         RaycastHit hit;
-        Debug.Log(LayerMask.NameToLayer("Bike"));
+     
         int layer = 1 << LayerMask.NameToLayer("Bike");
-        if (Physics.Raycast(player.transform.position, (interpolatedTarget-player.transform.position).normalized, out hit, (interpolatedTarget - player.transform.position).magnitude, ~layer))
+        Vector3 origin = player.transform.position + offset;
+        Vector3 direction = transform.position-origin;
+        //Debug.DrawRay(b, a.normalized* a.magnitude, Color.white, 0.1f, false);
+        if (Physics.Raycast(origin, direction.normalized, out hit, direction.magnitude*1.1f, ~layer))
         {
-            distance = Vector3.Project( hit.point-player.transform.position, cyclistZ_axis).magnitude;
-            //offset = offset * distance / originalDistance;
-            Debug.Log(distance);
-            Debug.Log(hit.collider.gameObject.tag);
-            Debug.Log(hit.collider.gameObject);
+            
+            Vector3 forward = direction.normalized * (hit.distance)*0.7f;
+            
+            Debug.DrawRay(origin, forward, Color.green);
+            //interpolatedTarget = origin+forward;
+            distance = hit.distance*0.7f ;
+            
         }
         else
         {
-            distance = originalDistance;
-            offset = originalOffset;
+            distance = distance + (originalDistance - distance) * multiplier * Time.deltaTime; 
         }
+        Debug.Log(distance);
     }
 }

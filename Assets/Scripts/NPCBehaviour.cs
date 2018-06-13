@@ -47,7 +47,7 @@ public class NPCBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter(Collision col)
 	{
-        if (col.gameObject.CompareTag("Player") && firstHit)
+        if (firstHit)
         {
             _collided = true;
             _rigidbody.useGravity = true;
